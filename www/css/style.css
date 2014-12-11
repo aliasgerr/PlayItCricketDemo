@@ -1,3 +1,8 @@
 /* Empty. Add your own CSS if you like */
-ul.panels[rn-carousel]{width: 33%; margin-auto;overflow: visible;}
-.card{background-color: #CCC; border: 1px solid #555; text-align:center; display: inline-block; width:33%;}
+ul.panels[rn-carousel]{overflow: visible; width:50%; margin:auto; height: 180px;}
+.panel .inner-panel{background-color: rgb(247,194,120) ; text-align:center; display: inline-block; padding: 5px; border-radius: 5px; margin:10px; height:150px!important;transition: 0.3s background-color;}
+.panel.active .inner-panel{ background-color: rgb(92,199,211)}
+.inner-panel p{color:#FFF; vertical-align: middle; margin-top:25%; font-weight: 600;}
+.tournament-list{border: 1px solid #CCC}
+.tournament-item{padding:15px; border-bottom:1px solid #CCC; }
+
