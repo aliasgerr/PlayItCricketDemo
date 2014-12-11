@@ -5,6 +5,24 @@ angular.module('starter.services', [])
  */
 .factory('Tournaments', function($http) {
   // Might use a resource here that returns a JSON array
+  //get API Data
+    console.log("sending http req");
+        
+    var tournaments = {}
+
+    $http.get('http://cricket.api.playitgame.com/v1/?category=tournament&action=get-future-tournaments&page=0&limit=10')
+    .success(function(data){
+      console.log("data:" + data);
+      tournaments = data;
+      
+        console.log(n+"::"+data[n]);
+      
+      
+    })
+    .error(function(error){
+      console.log("Error:"+error);
+    });
+    //
 
   // Some fake testing data
   var tournaments = {
@@ -136,6 +154,28 @@ angular.module('starter.services', [])
       "next_page": true
    }};
 
+   var tList = tournaments.data.tournament_list;
+   var min_date=new Date(3000,1,1); var max_date=new Date(1900,1,1);
+   for(var n in tList){
+    var start_date = new Date(tList[n].date_start);
+    var end_date = new Date(tList[n].date_end);
+    min_date = new Date(Math.min(min_date, start_date));
+    max_date = new Date(Math.max(max_date, end_date));
+    //console.log(n+"Min:: "+ min_date + " | " + "Max:: "+max_date);
+  }
+
+  var dateArray = [];
+  //generate all days
+  while(min_date<=max_date){
+    dateArray.push(new Date(min_date));
+    min_date.setDate(min_date.getDate() + 1);
+
+    //console.log("MIN>>"+min_date)
+  }
+  
+  //console.log("Date Array: \n"+dateArray.join("\n"));
+
+
   return {
     all: function() {
       return tournaments.data.tournament_list;
@@ -143,6 +183,16 @@ angular.module('starter.services', [])
     get: function(id) {
       // Simple index lookup
       return tournaments.data.tournament_list[id];
+    },
+    getDays: function(){
+      return dateArray;
+    },
+    getTournamentDuring:function (date) {
+      var matchingTournaments
     }
   }
 });
+
+function dateFormatter(strDate){
+  return new Date(strDate);
+}
