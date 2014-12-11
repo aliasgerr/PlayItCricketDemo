@@ -1,0 +1,3 @@
+/* Empty. Add your own CSS if you like */
+ul.panels[rn-carousel]{width: 33%; margin-auto;overflow: visible;}
+.card{background-color: #CCC; border: 1px solid #555; text-align:center; display: inline-block; width:33%;}
