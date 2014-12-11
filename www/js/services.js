@@ -10,17 +10,15 @@ angular.module('starter.services', [])
         
     var tournaments = {}
 
-    $http.get('http://cricket.api.playitgame.com/v1/?category=tournament&action=get-future-tournaments&page=0&limit=10')
-    .success(function(data){
-      console.log("data:" + data);
-      tournaments = data;
-      
-        console.log(n+"::"+data[n]);
-      
-      
-    })
-    .error(function(error){
-      console.log("Error:"+error);
+    
+
+    $http.get('http://cricket.api.playitgame.com/v1/?category=tournament&action=get-future-tournaments&page=0&limit=10').
+    success(function(data, status, headers, config) {
+      $scope.posts = data;
+    }).
+    error(function(data, status, headers, config) {
+      // log error
+      console.log("Error " + data + "|" + status)
     });
     //
 
