@@ -1,0 +1,28 @@
+<ion-view view-title="Dashboard">
+  	<ion-content class="padding">
+  	<h3>Find Match Dates</h3>
+	    <ul class="panels" rn-carousel rn-carousel-indicator rn-carousel-index="slideIndex" class="carousel-ui" rn-carousel-transition="hexagon" style="display:block">
+		  <!-- <li ng-repeat="tournament in tournaments" class="panel" ng-class="{active: $index==$parent.slideIndex, prev: $index<$parent.slideIndex, next: $index>$parent.slideIndex}" >
+		    <div class="inner-panel">
+		      <b>{{tournament.tournament_name}}</b>
+		      <p>{{tournament.tournament_type}}</p>
+		      <p>From {{tournament.date_start}} to {{tournament.date_end}}</p>
+		    </div>
+		    </li>-->
+		    <li ng-repeat="day in days" class="panel" ng-class="{active: $index==$parent.slideIndex, prev: $index<$parent.slideIndex, next: $index>$parent.slideIndex}" >
+		    <div class="inner-panel">
+		      <p>{{day | date:'fullDate'}}</p>
+		      
+		    </div>
+		    </li>
+	  	</ul>  
+	  	<h3>Tournaments underway</h3>
+ 		<ul class="tournament-list">
+	      <li ng-repeat="tournament in tournaments | filter:datefilter(slideIndex)" href="#/tab/friend/{{tournament.tournament_id}}" class="tournament-item">
+	        {{tournament.tournament_name}}
+	      </li>
+	    </ul>
+    	
+	</ion-content>
+
+</ion-view>

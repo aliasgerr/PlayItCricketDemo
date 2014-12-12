@@ -1,0 +1,13 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <ul class="panels" rn-carousel>
+	    <li ng-repeat="tournament in tournaments" class="card">
+	    
+	      <b>{{tournament.tournament_name}}</b>
+	      <p>{{tournament.tournament_type}}</p>
+	      <p>From {{tournament.date_start}} to {{tournament.date_end}}</p>
+	    
+	    </li>
+  </ul>
+  </ion-content>
+</ion-view>

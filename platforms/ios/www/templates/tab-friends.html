@@ -1,0 +1,9 @@
+<ion-view view-title="Friends">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="tournament in tournaments" type="item-text-wrap" href="#/tab/friend/{{tournament.tournament_id}}">
+        {{tournament.tournament_name}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
